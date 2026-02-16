@@ -3,67 +3,115 @@ package io.github.stiv3ns.twactionorganizer.desktop.theme
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Color(0xFF90CAF9),
-    onPrimary = Color(0xFF0D47A1),
-    primaryContainer = Color(0xFF1565C0),
-    onPrimaryContainer = Color(0xFFBBDEFB),
-    secondary = Color(0xFFA5D6A7),
-    onSecondary = Color(0xFF1B5E20),
-    secondaryContainer = Color(0xFF2E7D32),
-    onSecondaryContainer = Color(0xFFC8E6C9),
-    tertiary = Color(0xFFFFCC80),
-    onTertiary = Color(0xFFE65100),
-    tertiaryContainer = Color(0xFFEF6C00),
-    onTertiaryContainer = Color(0xFFFFE0B2),
-    error = Color(0xFFEF9A9A),
-    onError = Color(0xFFB71C1C),
-    background = Color(0xFF1A1A2E),
-    onBackground = Color(0xFFE0E0E0),
-    surface = Color(0xFF16213E),
-    onSurface = Color(0xFFE0E0E0),
-    surfaceVariant = Color(0xFF1F2B47),
-    onSurfaceVariant = Color(0xFFB0BEC5),
-    outline = Color(0xFF546E7A),
-    outlineVariant = Color(0xFF37474F),
+object TwColors {
+    // Parchment tones (content backgrounds)
+    val parchment = Color(0xFFF4E4BC)
+    val parchmentLight = Color(0xFFFAF2E0)
+    val parchmentMid = Color(0xFFE8D5A3)
+    val parchmentDark = Color(0xFFD7C4A0)
+
+    // Wood / frame (sidebar, header, borders)
+    val woodDark = Color(0xFF3E2015)
+    val woodMedium = Color(0xFF5D3A1A)
+    val woodLight = Color(0xFF7D510F)
+    val woodFrame = Color(0xFF4A2E14)
+
+    // Table header golden-brown
+    val tableHeader = Color(0xFFC1A264)
+    val tableHeaderDark = Color(0xFFB08C4A)
+
+    // TW green (buttons, links, accents)
+    val green = Color(0xFF578A1E)
+    val greenLight = Color(0xFF6B9F2B)
+    val greenDark = Color(0xFF3E6B10)
+
+    // Red (attacks, warnings)
+    val red = Color(0xFFB30000)
+    val redLight = Color(0xFFD43333)
+
+    // Gold (highlights, active state)
+    val gold = Color(0xFFDECA98)
+    val goldBright = Color(0xFFFFC107)
+    val goldDark = Color(0xFFC9A94E)
+
+    // Text
+    val inkDark = Color(0xFF1A0E00)
+    val inkBrown = Color(0xFF3E2723)
+    val inkMedium = Color(0xFF5D4037)
+
+    // Info blue
+    val blue = Color(0xFF1565C0)
+    val blueLight = Color(0xFF42A5F5)
+}
+
+private val TwColorScheme = lightColorScheme(
+    primary = TwColors.green,
+    onPrimary = Color.White,
+    primaryContainer = TwColors.greenLight,
+    onPrimaryContainer = Color.White,
+
+    secondary = TwColors.woodMedium,
+    onSecondary = TwColors.gold,
+    secondaryContainer = TwColors.woodLight,
+    onSecondaryContainer = TwColors.parchment,
+
+    tertiary = TwColors.goldBright,
+    onTertiary = TwColors.woodDark,
+    tertiaryContainer = TwColors.goldDark,
+    onTertiaryContainer = TwColors.woodDark,
+
+    error = TwColors.red,
+    onError = Color.White,
+    errorContainer = TwColors.redLight,
+    onErrorContainer = Color.White,
+
+    background = TwColors.parchment,
+    onBackground = TwColors.inkDark,
+
+    surface = TwColors.parchmentLight,
+    onSurface = TwColors.inkDark,
+
+    surfaceVariant = TwColors.parchmentMid,
+    onSurfaceVariant = TwColors.inkBrown,
+
+    outline = TwColors.woodLight,
+    outlineVariant = TwColors.parchmentDark,
+
+    inverseSurface = TwColors.woodDark,
+    inverseOnSurface = TwColors.parchment,
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Color(0xFF1565C0),
-    onPrimary = Color.White,
-    primaryContainer = Color(0xFFBBDEFB),
-    onPrimaryContainer = Color(0xFF0D47A1),
-    secondary = Color(0xFF2E7D32),
-    onSecondary = Color.White,
-    secondaryContainer = Color(0xFFC8E6C9),
-    onSecondaryContainer = Color(0xFF1B5E20),
-    tertiary = Color(0xFFEF6C00),
-    onTertiary = Color.White,
-    tertiaryContainer = Color(0xFFFFE0B2),
-    onTertiaryContainer = Color(0xFFE65100),
-    error = Color(0xFFC62828),
-    onError = Color.White,
-    background = Color(0xFFF5F5F5),
-    onBackground = Color(0xFF212121),
-    surface = Color.White,
-    onSurface = Color(0xFF212121),
-    surfaceVariant = Color(0xFFECEFF1),
-    onSurfaceVariant = Color(0xFF455A64),
-    outline = Color(0xFF90A4AE),
-    outlineVariant = Color(0xFFCFD8DC),
+private val TwTypography = Typography(
+    titleLarge = Typography().titleLarge.copy(
+        fontWeight = FontWeight.Bold,
+        color = TwColors.inkBrown,
+        letterSpacing = 0.5.sp
+    ),
+    titleMedium = Typography().titleMedium.copy(
+        fontWeight = FontWeight.SemiBold,
+        color = TwColors.inkBrown
+    ),
+    labelLarge = Typography().labelLarge.copy(
+        fontWeight = FontWeight.Bold,
+        letterSpacing = 0.5.sp
+    ),
+    labelMedium = Typography().labelMedium.copy(
+        fontWeight = FontWeight.SemiBold
+    ),
 )
 
 @Composable
 fun AppTheme(
-    darkTheme: Boolean = true,
+    darkTheme: Boolean = false,
     content: @Composable () -> Unit
 ) {
-    val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
-
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography(),
+        colorScheme = TwColorScheme,
+        typography = TwTypography,
         content = content
     )
 }

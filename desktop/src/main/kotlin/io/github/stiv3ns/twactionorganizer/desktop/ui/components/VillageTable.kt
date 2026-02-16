@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.stiv3ns.twactionorganizer.core.villages.TargetVillage
 import io.github.stiv3ns.twactionorganizer.core.villages.Village
+import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 
 data class ColumnDef(
     val header: String,
@@ -62,11 +63,11 @@ private fun VillageTableInternal(
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
-        // Header row
+        // Header row — golden-brown like TW table headers
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .background(TwColors.tableHeader)
                 .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -75,7 +76,7 @@ private fun VillageTableInternal(
                     text = col.header,
                     style = MaterialTheme.typography.labelMedium,
                     fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = TwColors.woodDark,
                     modifier = Modifier.weight(col.weight),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
@@ -83,14 +84,17 @@ private fun VillageTableInternal(
             }
         }
 
-        HorizontalDivider(color = MaterialTheme.colorScheme.outline)
+        HorizontalDivider(color = TwColors.woodLight)
 
-        // Data rows
+        // Data rows — alternating parchment shades like TW tables
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
-            items(villages) { village ->
+            items(villages.size) { index ->
+                val village = villages[index]
+                val rowBg = if (index % 2 == 0) TwColors.parchmentLight else TwColors.parchmentMid
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .background(rowBg)
                         .padding(horizontal = 12.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -98,7 +102,7 @@ private fun VillageTableInternal(
                         Text(
                             text = col.valueExtractor(village),
                             style = MaterialTheme.typography.bodySmall,
-                            color = MaterialTheme.colorScheme.onSurface,
+                            color = TwColors.inkDark,
                             modifier = Modifier.weight(col.weight),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
@@ -106,7 +110,7 @@ private fun VillageTableInternal(
                     }
                 }
                 HorizontalDivider(
-                    color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
+                    color = TwColors.parchmentDark
                 )
             }
         }

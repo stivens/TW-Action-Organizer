@@ -13,12 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import io.github.stiv3ns.twactionorganizer.desktop.state.LogEntry
 import io.github.stiv3ns.twactionorganizer.desktop.state.LogLevel
 import io.github.stiv3ns.twactionorganizer.desktop.state.LogStore
+import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 
 @Composable
 fun LogPanel(
@@ -36,31 +36,30 @@ fun LogPanel(
 
     Surface(
         modifier = modifier.fillMaxWidth(),
-        color = MaterialTheme.colorScheme.surface,
-        tonalElevation = 2.dp
+        color = TwColors.woodDark,
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .background(TwColors.woodFrame)
                     .padding(horizontal = 12.dp, vertical = 6.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     "Logs",
                     style = MaterialTheme.typography.labelLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TwColors.goldBright
                 )
                 Spacer(Modifier.weight(1f))
                 Text(
                     "${entries.size} entries",
                     style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = TwColors.gold
                 )
             }
 
-            HorizontalDivider(color = MaterialTheme.colorScheme.outline)
+            HorizontalDivider(color = TwColors.woodLight)
 
             if (entries.isEmpty()) {
                 Box(
@@ -70,7 +69,7 @@ fun LogPanel(
                     Text(
                         "No logs yet",
                         style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        color = TwColors.gold
                     )
                 }
             } else {
@@ -90,10 +89,10 @@ fun LogPanel(
 @Composable
 private fun LogEntryRow(entry: LogEntry) {
     val levelColor = when (entry.level) {
-        LogLevel.INFO -> MaterialTheme.colorScheme.onSurface
-        LogLevel.WARN -> Color(0xFFFFA726)
-        LogLevel.ERROR -> Color(0xFFEF5350)
-        LogLevel.REPORT -> Color(0xFF42A5F5)
+        LogLevel.INFO -> TwColors.parchment
+        LogLevel.WARN -> TwColors.goldBright
+        LogLevel.ERROR -> TwColors.redLight
+        LogLevel.REPORT -> TwColors.blueLight
     }
 
     val levelTag = when (entry.level) {
@@ -113,7 +112,7 @@ private fun LogEntryRow(entry: LogEntry) {
             text = entry.timestamp,
             style = MaterialTheme.typography.bodySmall,
             fontFamily = FontFamily.Monospace,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = TwColors.gold,
             modifier = Modifier.width(64.dp)
         )
         Text(

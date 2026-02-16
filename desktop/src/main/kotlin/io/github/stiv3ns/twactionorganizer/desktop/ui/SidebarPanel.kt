@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
 import io.github.stiv3ns.twactionorganizer.desktop.state.Category
+import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 import io.github.stiv3ns.twactionorganizer.desktop.ui.components.*
 
 @Composable
@@ -24,8 +25,7 @@ fun SidebarPanel(
 
     Surface(
         modifier = modifier.fillMaxHeight(),
-        color = MaterialTheme.colorScheme.surface,
-        tonalElevation = 1.dp
+        color = TwColors.woodFrame,
     ) {
         Column(
             modifier = Modifier
@@ -45,7 +45,7 @@ fun SidebarPanel(
             Spacer(Modifier.height(12.dp))
             HorizontalDivider(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                color = MaterialTheme.colorScheme.outlineVariant
+                color = TwColors.woodLight
             )
             Spacer(Modifier.height(8.dp))
 
@@ -110,7 +110,7 @@ fun SidebarPanel(
             Spacer(Modifier.height(12.dp))
             HorizontalDivider(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                color = MaterialTheme.colorScheme.outlineVariant
+                color = TwColors.woodLight
             )
             Spacer(Modifier.height(8.dp))
 
@@ -121,7 +121,7 @@ fun SidebarPanel(
                 Text(
                     "No target groups yet",
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    color = TwColors.gold,
                     modifier = Modifier.padding(start = 28.dp, top = 4.dp)
                 )
             }
@@ -139,7 +139,7 @@ fun SidebarPanel(
             Spacer(Modifier.height(12.dp))
             HorizontalDivider(
                 modifier = Modifier.padding(horizontal = 12.dp),
-                color = MaterialTheme.colorScheme.outlineVariant
+                color = TwColors.woodLight
             )
             Spacer(Modifier.height(8.dp))
 

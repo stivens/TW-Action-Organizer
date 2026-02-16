@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 
 @Composable
 fun CategoryItem(
@@ -24,22 +25,22 @@ fun CategoryItem(
     indent: Int = 0
 ) {
     val bgColor = if (isSelected) {
-        MaterialTheme.colorScheme.primaryContainer
+        TwColors.tableHeader
     } else {
-        MaterialTheme.colorScheme.surface
+        TwColors.woodMedium
     }
 
     val textColor = if (isSelected) {
-        MaterialTheme.colorScheme.onPrimaryContainer
+        TwColors.woodDark
     } else {
-        MaterialTheme.colorScheme.onSurface
+        TwColors.parchment
     }
 
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(start = (12 + indent * 16).dp, end = 4.dp, top = 1.dp, bottom = 1.dp)
-            .clip(RoundedCornerShape(6.dp))
+            .clip(RoundedCornerShape(4.dp))
             .background(bgColor)
             .clickable(onClick = onClick)
             .padding(horizontal = 10.dp, vertical = 6.dp),
@@ -63,7 +64,7 @@ fun CategoryItem(
                     Icons.Default.Close,
                     contentDescription = "Remove",
                     modifier = Modifier.size(14.dp),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    tint = if (isSelected) TwColors.woodDark else TwColors.parchmentDark
                 )
             }
         }
@@ -85,14 +86,17 @@ fun SectionHeader(
         Text(
             text = title,
             style = MaterialTheme.typography.labelLarge,
-            color = MaterialTheme.colorScheme.primary,
+            color = TwColors.goldBright,
             modifier = Modifier.weight(1f)
         )
         if (onAdd != null) {
             TextButton(
                 onClick = onAdd,
                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 0.dp),
-                modifier = Modifier.height(28.dp)
+                modifier = Modifier.height(28.dp),
+                colors = ButtonDefaults.textButtonColors(
+                    contentColor = TwColors.greenLight
+                )
             ) {
                 Text(
                     "+ Add",

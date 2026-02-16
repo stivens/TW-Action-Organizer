@@ -1,12 +1,14 @@
 package io.github.stiv3ns.twactionorganizer.desktop.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -16,6 +18,7 @@ import io.github.stiv3ns.twactionorganizer.core.TargetGroup
 import io.github.stiv3ns.twactionorganizer.core.World
 import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
 import io.github.stiv3ns.twactionorganizer.desktop.state.Category
+import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 import io.github.stiv3ns.twactionorganizer.desktop.ui.components.AllyVillageTable
 import io.github.stiv3ns.twactionorganizer.desktop.ui.components.TargetVillageTable
 
@@ -26,7 +29,7 @@ fun WorkAreaPanel(
 ) {
     Surface(
         modifier = modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = TwColors.parchment
     ) {
         when (val cat = appState.selectedCategory) {
             is Category.WorldConfig -> WorldView(appState.world)
@@ -50,7 +53,7 @@ private fun WorldView(world: World?) {
         Text(
             "World Configuration",
             style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
+            color = TwColors.inkBrown
         )
         Spacer(Modifier.height(16.dp))
 
@@ -72,7 +75,7 @@ private fun ResourcesView(title: String, resources: Resources) {
         Text(
             title,
             style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
+            color = TwColors.inkBrown
         )
         Spacer(Modifier.height(12.dp))
 
@@ -102,7 +105,7 @@ private fun TargetGroupView(group: TargetGroup) {
         Text(
             group.name,
             style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
+            color = TwColors.inkBrown
         )
         Spacer(Modifier.height(12.dp))
 
@@ -127,7 +130,7 @@ private fun AssignmentsView(assignments: List<Assignment>) {
         Text(
             "Assignments",
             style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
+            color = TwColors.inkBrown
         )
         Spacer(Modifier.height(12.dp))
 
@@ -139,14 +142,15 @@ private fun AssignmentsView(assignments: List<Assignment>) {
         Text(
             "${assignments.size} assignments generated",
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TwColors.inkMedium
         )
         Spacer(Modifier.height(12.dp))
 
-        // Assignments table header
+        // Assignments table header — golden-brown like TW
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .background(TwColors.tableHeader)
                 .padding(horizontal = 12.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -156,19 +160,23 @@ private fun AssignmentsView(assignments: List<Assignment>) {
             TableHeader("Distance", Modifier.weight(1f))
             TableHeader("Delay", Modifier.weight(0.8f))
         }
-        HorizontalDivider(color = MaterialTheme.colorScheme.outline)
+        HorizontalDivider(color = TwColors.woodLight)
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(assignments) { assignment ->
+            items(assignments.size) { index ->
+                val assignment = assignments[index]
+                val rowBg = if (index % 2 == 0) TwColors.parchmentLight else TwColors.parchmentMid
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .background(rowBg)
                         .padding(horizontal = 12.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         assignment.departure.toString(),
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwColors.inkDark,
                         modifier = Modifier.weight(1.5f),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -176,6 +184,7 @@ private fun AssignmentsView(assignments: List<Assignment>) {
                     Text(
                         assignment.destination.toString(),
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwColors.inkDark,
                         modifier = Modifier.weight(1.5f),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -183,6 +192,7 @@ private fun AssignmentsView(assignments: List<Assignment>) {
                     Text(
                         assignment.type.name,
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwColors.inkDark,
                         modifier = Modifier.weight(1.5f),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
@@ -190,19 +200,19 @@ private fun AssignmentsView(assignments: List<Assignment>) {
                     Text(
                         "%.1f".format(kotlin.math.sqrt(assignment.squaredDistance.toDouble())),
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwColors.inkDark,
                         modifier = Modifier.weight(1f),
                         maxLines = 1
                     )
                     Text(
                         if (assignment.delayInMinutes > 0) "${assignment.delayInMinutes}m" else "",
                         style = MaterialTheme.typography.bodySmall,
+                        color = TwColors.inkDark,
                         modifier = Modifier.weight(0.8f),
                         maxLines = 1
                     )
                 }
-                HorizontalDivider(
-                    color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)
-                )
+                HorizontalDivider(color = TwColors.parchmentDark)
             }
         }
     }
@@ -214,7 +224,7 @@ private fun TableHeader(text: String, modifier: Modifier = Modifier) {
         text = text,
         style = MaterialTheme.typography.labelMedium,
         fontWeight = FontWeight.Bold,
-        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        color = TwColors.woodDark,
         modifier = modifier,
         maxLines = 1,
         overflow = TextOverflow.Ellipsis
@@ -230,7 +240,7 @@ private fun EmptyState(message: String) {
         Text(
             message,
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TwColors.inkMedium
         )
     }
 }
@@ -239,8 +249,9 @@ private fun EmptyState(message: String) {
 private fun InfoCard(content: @Composable ColumnScope.() -> Unit) {
     Card(
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = TwColors.parchmentMid
         ),
+        shape = RoundedCornerShape(4.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
         Column(
@@ -260,13 +271,13 @@ private fun InfoRow(label: String, value: String) {
         Text(
             label,
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = TwColors.inkMedium
         )
         Text(
             value,
             style = MaterialTheme.typography.bodyMedium,
             fontWeight = FontWeight.Medium,
-            color = MaterialTheme.colorScheme.onSurface
+            color = TwColors.inkDark
         )
     }
 }
