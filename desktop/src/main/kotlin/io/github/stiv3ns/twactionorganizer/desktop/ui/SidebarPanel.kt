@@ -150,6 +150,20 @@ fun SidebarPanel(
                 onClick = { appState.selectedCategory = Category.Assignments }
             )
 
+            Spacer(Modifier.height(12.dp))
+            HorizontalDivider(
+                modifier = Modifier.padding(horizontal = 12.dp),
+                color = TwColors.woodLight
+            )
+            Spacer(Modifier.height(8.dp))
+
+            // Map section
+            CategoryItem(
+                label = "Map",
+                isSelected = appState.selectedCategory is Category.MapView,
+                onClick = { appState.selectedCategory = Category.MapView }
+            )
+
             Spacer(Modifier.height(16.dp))
 
             // Execute button

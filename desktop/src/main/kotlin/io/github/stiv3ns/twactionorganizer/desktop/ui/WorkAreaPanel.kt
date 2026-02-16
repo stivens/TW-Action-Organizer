@@ -20,6 +20,7 @@ import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
 import io.github.stiv3ns.twactionorganizer.desktop.state.Category
 import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
 import io.github.stiv3ns.twactionorganizer.desktop.ui.components.AllyVillageTable
+import io.github.stiv3ns.twactionorganizer.desktop.ui.components.MapView
 import io.github.stiv3ns.twactionorganizer.desktop.ui.components.TargetVillageTable
 
 @Composable
@@ -38,6 +39,7 @@ fun WorkAreaPanel(
             is Category.DemolitionResources -> ResourcesView("Demolition Resources", appState.demolitionResources)
             is Category.TargetGroupItem -> TargetGroupView(cat.group)
             is Category.Assignments -> AssignmentsView(appState.assignments)
+            is Category.MapView -> MapView(appState, Modifier.fillMaxSize())
         }
     }
 }

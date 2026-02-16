@@ -16,6 +16,7 @@ sealed class Category {
     data object DemolitionResources : Category()
     data class TargetGroupItem(val group: TargetGroup) : Category()
     data object Assignments : Category()
+    data object MapView : Category()
 }
 
 @Stable
