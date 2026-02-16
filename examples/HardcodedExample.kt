@@ -10,11 +10,10 @@ import io.github.stiv3ns.twactionorganizer.localization.pl.PL_PMFormatterLocaliz
 import io.github.stiv3ns.twactionorganizer.logging.logs.InfoLog
 import io.github.stiv3ns.twactionorganizer.logging.logs.ReportLog
 import io.github.stiv3ns.twactionorganizer.logging.logs.WarnLog
-import kotlinx.coroutines.*
+import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.time.LocalDateTime
 
-@ObsoleteCoroutinesApi
 fun main(): Unit = runBlocking {
     val world = World("pl150.plemiona.pl")
     val uow = UnitOfWork()

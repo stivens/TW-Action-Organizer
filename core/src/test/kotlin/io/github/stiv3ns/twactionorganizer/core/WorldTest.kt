@@ -5,8 +5,6 @@ import io.github.stiv3ns.twactionorganizer.core.villages.Village
 import io.kotest.assertions.assertSoftly
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.WordSpec
-import io.kotest.data.forAll
-import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 
@@ -41,14 +39,18 @@ class WorldTest : WordSpec({
             }
 
             "fetch proper village id and owner /* this test may (and will) randomly crash when village changes owner... */" {
-                forAll(
-                    row("500|499",
+                data class TestCase(val coords: String, val expectedVillage: Village)
+
+                val cases = listOf(
+                    TestCase("500|499",
                         Village(x = 500, y = 499, id = 15, ownerNickname = "Lucky1369")),
-                    row("497|506",
+                    TestCase("497|506",
                         Village(x = 497, y = 506, id = 44, ownerNickname = "adam11145")),
-                    row("508|499",
+                    TestCase("508|499",
                         Village(x = 508, y = 499, id = 66, ownerNickname = "adam11145")),
-                ) { coords, expectedVillage ->
+                )
+
+                for ((coords, expectedVillage) in cases) {
                     val fetched = world.villages[coords]
 
                     fetched shouldNotBe null
