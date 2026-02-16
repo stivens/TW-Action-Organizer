@@ -11,10 +11,10 @@ A Tribal Wars attack coordination tool that assigns ally villages to targets usi
 
 ```bash
 # Run the desktop app
-./gradlew :desktop:run
+./gradlew :gui:run
 
 # Build native distributables (DMG/MSI/DEB)
-./gradlew :desktop:packageDistributionForCurrentOS
+./gradlew :gui:packageDistributionForCurrentOS
 
 # Run core tests
 ./gradlew :core:test
