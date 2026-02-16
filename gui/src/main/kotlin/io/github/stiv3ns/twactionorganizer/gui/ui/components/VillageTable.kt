@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui.components
+package io.github.stiv3ns.twactionorganizer.gui.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,7 +15,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.github.stiv3ns.twactionorganizer.core.villages.TargetVillage
 import io.github.stiv3ns.twactionorganizer.core.villages.Village
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
 
 data class ColumnDef(
     val header: String,

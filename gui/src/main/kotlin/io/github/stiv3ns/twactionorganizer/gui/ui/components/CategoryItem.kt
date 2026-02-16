@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui.components
+package io.github.stiv3ns.twactionorganizer.gui.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
 
 @Composable
 fun CategoryItem(

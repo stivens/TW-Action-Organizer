@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.state
+package io.github.stiv3ns.twactionorganizer.gui.state
 
 import androidx.compose.runtime.mutableStateListOf
 import io.github.stiv3ns.twactionorganizer.logging.logs.ErrorLog

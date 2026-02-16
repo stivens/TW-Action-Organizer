@@ -1,6 +1,6 @@
 @file:OptIn(kotlinx.coroutines.ObsoleteCoroutinesApi::class)
 
-package io.github.stiv3ns.twactionorganizer.desktop.ui.components
+package io.github.stiv3ns.twactionorganizer.gui.ui.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -16,7 +16,7 @@ import io.github.stiv3ns.twactionorganizer.core.World
 import io.github.stiv3ns.twactionorganizer.core.assigners.AssignerType
 import io.github.stiv3ns.twactionorganizer.core.parsers.AllyParserWithDynamicOwnerResolution
 import io.github.stiv3ns.twactionorganizer.core.parsers.TargetParser
-import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
+import io.github.stiv3ns.twactionorganizer.gui.state.AppState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

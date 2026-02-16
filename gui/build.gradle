@@ -23,7 +23,7 @@ dependencies {
 
 compose.desktop {
     application {
-        mainClass = 'io.github.stiv3ns.twactionorganizer.desktop.MainKt'
+        mainClass = 'io.github.stiv3ns.twactionorganizer.gui.MainKt'
 
         nativeDistributions {
             packageName = 'TW-Action-Organizer'

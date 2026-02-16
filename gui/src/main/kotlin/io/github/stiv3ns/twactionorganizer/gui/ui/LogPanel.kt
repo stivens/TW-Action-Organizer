@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui
+package io.github.stiv3ns.twactionorganizer.gui.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,10 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
-import io.github.stiv3ns.twactionorganizer.desktop.state.LogEntry
-import io.github.stiv3ns.twactionorganizer.desktop.state.LogLevel
-import io.github.stiv3ns.twactionorganizer.desktop.state.LogStore
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.state.LogEntry
+import io.github.stiv3ns.twactionorganizer.gui.state.LogLevel
+import io.github.stiv3ns.twactionorganizer.gui.state.LogStore
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
 
 @Composable
 fun LogPanel(

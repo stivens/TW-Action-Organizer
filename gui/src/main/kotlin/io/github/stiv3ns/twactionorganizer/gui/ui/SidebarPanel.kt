@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui
+package io.github.stiv3ns.twactionorganizer.gui.ui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -7,10 +7,10 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
-import io.github.stiv3ns.twactionorganizer.desktop.state.Category
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
-import io.github.stiv3ns.twactionorganizer.desktop.ui.components.*
+import io.github.stiv3ns.twactionorganizer.gui.state.AppState
+import io.github.stiv3ns.twactionorganizer.gui.state.Category
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.ui.components.*
 
 @Composable
 fun SidebarPanel(

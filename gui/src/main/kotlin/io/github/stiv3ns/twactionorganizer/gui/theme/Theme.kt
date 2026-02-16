@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.theme
+package io.github.stiv3ns.twactionorganizer.gui.theme
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable

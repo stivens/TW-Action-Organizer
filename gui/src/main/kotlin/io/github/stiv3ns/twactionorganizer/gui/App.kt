@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop
+package io.github.stiv3ns.twactionorganizer.gui
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.HorizontalDivider
@@ -8,12 +8,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
-import io.github.stiv3ns.twactionorganizer.desktop.theme.AppTheme
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
-import io.github.stiv3ns.twactionorganizer.desktop.ui.LogPanel
-import io.github.stiv3ns.twactionorganizer.desktop.ui.SidebarPanel
-import io.github.stiv3ns.twactionorganizer.desktop.ui.WorkAreaPanel
+import io.github.stiv3ns.twactionorganizer.gui.state.AppState
+import io.github.stiv3ns.twactionorganizer.gui.theme.AppTheme
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.ui.LogPanel
+import io.github.stiv3ns.twactionorganizer.gui.ui.SidebarPanel
+import io.github.stiv3ns.twactionorganizer.gui.ui.WorkAreaPanel
 
 @Composable
 fun App() {

@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui
+package io.github.stiv3ns.twactionorganizer.gui.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,12 +16,12 @@ import io.github.stiv3ns.twactionorganizer.core.Assignment
 import io.github.stiv3ns.twactionorganizer.core.Resources
 import io.github.stiv3ns.twactionorganizer.core.TargetGroup
 import io.github.stiv3ns.twactionorganizer.core.World
-import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
-import io.github.stiv3ns.twactionorganizer.desktop.state.Category
-import io.github.stiv3ns.twactionorganizer.desktop.theme.TwColors
-import io.github.stiv3ns.twactionorganizer.desktop.ui.components.AllyVillageTable
-import io.github.stiv3ns.twactionorganizer.desktop.ui.components.MapView
-import io.github.stiv3ns.twactionorganizer.desktop.ui.components.TargetVillageTable
+import io.github.stiv3ns.twactionorganizer.gui.state.AppState
+import io.github.stiv3ns.twactionorganizer.gui.state.Category
+import io.github.stiv3ns.twactionorganizer.gui.theme.TwColors
+import io.github.stiv3ns.twactionorganizer.gui.ui.components.AllyVillageTable
+import io.github.stiv3ns.twactionorganizer.gui.ui.components.MapView
+import io.github.stiv3ns.twactionorganizer.gui.ui.components.TargetVillageTable
 
 @Composable
 fun WorkAreaPanel(

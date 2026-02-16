@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop.ui.components
+package io.github.stiv3ns.twactionorganizer.gui.ui.components
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -16,7 +16,7 @@ import androidx.compose.ui.input.pointer.PointerEventType
 import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
-import io.github.stiv3ns.twactionorganizer.desktop.state.AppState
+import io.github.stiv3ns.twactionorganizer.gui.state.AppState
 
 private data class MapPoint(val x: Int, val y: Int, val color: Color)
 

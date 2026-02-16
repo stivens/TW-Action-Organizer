@@ -1,4 +1,4 @@
-package io.github.stiv3ns.twactionorganizer.desktop
+package io.github.stiv3ns.twactionorganizer.gui
 
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
