@@ -1,1 +1,3 @@
 rootProject.name = 'twactionorganizer'
+
+include ':core', ':desktop'
