@@ -2,12 +2,14 @@
 
 package io.github.stiv3ns.twactionorganizer.desktop.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogWindow
+import androidx.compose.ui.window.rememberDialogState
 import io.github.stiv3ns.twactionorganizer.core.Resources
 import io.github.stiv3ns.twactionorganizer.core.TargetGroup
 import io.github.stiv3ns.twactionorganizer.core.World
@@ -30,7 +32,8 @@ fun WorldDialog(
 
     DialogWindow(
         onCloseRequest = onDismiss,
-        title = "Set World"
+        title = "Set World",
+        state = rememberDialogState(width = 450.dp, height = 250.dp)
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -113,7 +116,8 @@ fun ResourcesDialog(
 
     DialogWindow(
         onCloseRequest = onDismiss,
-        title = title
+        title = title,
+        state = rememberDialogState(width = 500.dp, height = 450.dp)
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -210,7 +214,8 @@ fun TargetGroupDialog(
 
     DialogWindow(
         onCloseRequest = onDismiss,
-        title = "Add Target Group"
+        title = "Add Target Group",
+        state = rememberDialogState(width = 550.dp, height = 550.dp)
     ) {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -251,9 +256,14 @@ fun TargetGroupDialog(
                             readOnly = true,
                             label = { Text("Type") },
                             singleLine = true,
-                            modifier = Modifier
-                                .fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth(),
                             enabled = !loading
+                        )
+                        // Clickable overlay to open the dropdown
+                        Box(
+                            modifier = Modifier
+                                .matchParentSize()
+                                .clickable(enabled = !loading) { typeMenuExpanded = true }
                         )
                         DropdownMenu(
                             expanded = typeMenuExpanded,
@@ -269,33 +279,7 @@ fun TargetGroupDialog(
                                 )
                             }
                         }
-                        // Invisible click overlay
-                        Box(
-                            modifier = Modifier
-                                .matchParentSize()
-                                .padding(top = 8.dp)
-                                .let { mod ->
-                                    mod
-                                }
-                        ) {
-                            androidx.compose.foundation.layout.Spacer(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .let { m ->
-                                        @Suppress("DEPRECATION")
-                                        m
-                                    }
-                            )
-                        }
                     }
-                }
-
-                // Clickable area for dropdown
-                TextButton(
-                    onClick = { typeMenuExpanded = true },
-                    enabled = !loading
-                ) {
-                    Text("Change assigner type: ${selectedType.name}")
                 }
 
                 Text(

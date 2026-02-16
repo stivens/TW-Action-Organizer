@@ -75,6 +75,7 @@ fun CategoryItem(
 fun SectionHeader(
     title: String,
     modifier: Modifier = Modifier,
+    buttonLabel: String = "+ Add",
     onAdd: (() -> Unit)? = null
 ) {
     Row(
@@ -99,7 +100,7 @@ fun SectionHeader(
                 )
             ) {
                 Text(
-                    "+ Add",
+                    buttonLabel,
                     style = MaterialTheme.typography.labelSmall
                 )
             }

@@ -35,7 +35,7 @@ fun SidebarPanel(
                 .padding(vertical = 8.dp)
         ) {
             // World section
-            SectionHeader("World", onAdd = { showWorldDialog = true })
+            SectionHeader("World", buttonLabel = "Setup", onAdd = { showWorldDialog = true })
             CategoryItem(
                 label = appState.world?.domain ?: "(not set)",
                 isSelected = appState.selectedCategory is Category.WorldConfig,
